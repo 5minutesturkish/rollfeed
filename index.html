@@ -153,9 +153,9 @@
 
 					<div class="swiper-slide">
 						<div class="container clearfix">
-							<div class="slider-caption">
+							<div class="slider-caption d-none d-lg-block">
 								<h2>rollfeed®</h2>
-								<p class="d-none d-sm-block">Токарное точение с использованием технологии rollfeed® смогло соединить самые современные разработки материаловедения с возможностями современных станков</p>
+								<p class="">Токарное точение с использованием технологии rollfeed® смогло соединить самые современные разработки материаловедения с возможностями современных станков</p>
 							</div>
 						</div>
 						<div class="video-wrap">
@@ -316,9 +316,9 @@
 					<div class="row">
 <div class="col-lg-6">
 	<div class="video-wrap">
-		<video poster="images/videos/deskwork.jpg" preload="auto" loop autoplay muted>
-			<source src='images/rollfeed/slider.mp4' type='video/mp4' />
-			<source src='images/rollfeed/slider.webm' type='video/webm' />
+		<video poster="images/videos/deskwork.jpg" preload="auto" controls>
+			<source src='images/rollfeed/video/ball-joint.mp4' type='video/mp4' />
+			<!-- <source src='images/rollfeed/slider.webm' type='video/webm' /> -->
 		</video>
 		<div class="video-overlay"></div>
 	</div>
@@ -366,8 +366,8 @@
 <div class="col-lg-6">
 		<div class="video-wrap">
 			<video poster="images/videos/deskwork.jpg" preload="auto" loop autoplay muted>
-				<source src='images/rollfeed/slider.mp4' type='video/mp4' />
-				<source src='images/rollfeed/slider.webm' type='video/webm' />
+				<source src='images/rollfeed/cylinder-liner.mp4' type='video/mp4' />
+				<!-- <source src='images/rollfeed/slider.webm' type='video/webm' /> -->
 			</video>
 			<div class="video-overlay"></div>
 		</div>
@@ -415,8 +415,8 @@
 	<div class="col-lg-6">
 			<div class="video-wrap">
 				<video poster="images/videos/deskwork.jpg" preload="auto" loop autoplay muted>
-					<source src='images/rollfeed/slider.mp4' type='video/mp4' />
-					<source src='images/rollfeed/slider.webm' type='video/webm' />
+					<source src='images/rollfeed/ball-cage.mp4' type='video/mp4' />
+					<!-- <source src='images/rollfeed/slider.webm' type='video/webm' /> -->
 				</video>
 				<div class="video-overlay"></div>
 			</div>
@@ -487,59 +487,21 @@
 
 					<div class="col_two_third">
 
-						<div class="widget clearfix">
-
-							<img src="images/footer-widget-logo.png" alt="" class="alignleft" style="margin-top: 8px; padding-right: 18px; border-right: 1px solid #4A4A4A;">
-
-							<p>We believe in <strong>Simple</strong>, <strong>Creative</strong> &amp; <strong>Flexible</strong> Design Standards with a Retina &amp; Responsive Approach. Browse the amazing Features this template offers.</p>
-
-							<div class="line" style="margin: 30px 0;"></div>
-
-							<div class="row">
-
-								<div class="col-lg-3 col-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Home</a></li>
-										<li><a href="#">About</a></li>
-										<li><a href="#">FAQs</a></li>
-										<li><a href="#">Support</a></li>
-										<li><a href="#">Contact</a></li>
-									</ul>
-								</div>
-
-								<div class="col-lg-3 col-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Shop</a></li>
-										<li><a href="#">Portfolio</a></li>
-										<li><a href="#">Blog</a></li>
-										<li><a href="#">Events</a></li>
-										<li><a href="#">Forums</a></li>
-									</ul>
-								</div>
-
-								<div class="col-lg-3 col-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Corporate</a></li>
-										<li><a href="#">Agency</a></li>
-										<li><a href="#">eCommerce</a></li>
-										<li><a href="#">Personal</a></li>
-										<li><a href="#">One Page</a></li>
-									</ul>
-								</div>
-
-								<div class="col-lg-3 col-6 bottommargin-sm widget_links">
-									<ul>
-										<li><a href="#">Restaurant</a></li>
-										<li><a href="#">Wedding</a></li>
-										<li><a href="#">App Showcase</a></li>
-										<li><a href="#">Magazine</a></li>
-										<li><a href="#">Landing Page</a></li>
-									</ul>
-								</div>
-
-							</div>
-
-						</div>
+							<script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+							<script type="text/javascript">
+								var map;
+							
+								DG.then(function () {
+									map = DG.map('2gismap', {
+										center: [55.684014, 37.342655],
+										zoom: 16
+									});
+									
+									DG.marker([55.684014, 37.342655]).addTo(map).bindPopup('Центральный офис «Микробор композит»');
+								});
+							</script>
+							
+							<div id="2gismap" style="width:100%; height:100%"></div>
 
 					</div>
 
