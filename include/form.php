@@ -27,8 +27,8 @@ require 'phpmailer/src/SMTP.php';
 $toemails = array();
 
 $toemails[] = array(
-				'email' => 'your-email@website.com', // Your Email Address
-				'name' => 'Your Name' // Your Name
+				'email' => 'info@zenlabs.ru', // Your Email Address
+				'name' => 'Ilya' // Your Name
 			);
 
 
@@ -37,8 +37,8 @@ $toemails[] = array(
 ---------------------------------------------------*/
 
 $fromemail = array(
-				'email' => 'no-reply@website.com', // Company's Email Address (preferably currently used Domain Name)
-				'name' => 'Company Name' // Company Name
+				'email' => 'hello@ipesterev.ru', // Company's Email Address (preferably currently used Domain Name)
+				'name' => 'Ilya' // Company Name
 			);
 
 
@@ -56,8 +56,17 @@ $recaptcha_secret = ''; // Your reCaptcha Secret
 
 $mail = new PHPMailer();
 
-/* Add your SMTP Codes after this Line */
+$mail->CharSet = 'UTF-8';
 
+/* Add your SMTP Codes after this Line */
+$mail->IsSMTP();
+$mail->Host = "smtp.yandex.com";
+$mail->SMTPDebug = 0;
+$mail->SMTPAuth = true;
+$mail->Port = 465;
+$mail->SMTPSecure = 'ssl';
+$mail->Username = "hello@ipesterev.ru";
+$mail->Password = "rY24TRrQX8PL2odxHVZD";
 
 // End of SMTP
 
@@ -78,10 +87,10 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	---------------------------------------------------*/
 
 	$message = array(
-		'success'			=> 'We have <strong>successfully</strong> received your Message and will get Back to you as soon as possible.',
-		'error'				=> 'Email <strong>could not</strong> be sent due to some Unexpected Error. Please Try Again later.',
-		'error_bot'			=> 'Bot Detected! Form could not be processed! Please Try Again!',
-		'error_unexpected'	=> 'An <strong>unexpected error</strong> occured. Please Try Again later.',
+		'success'			=> 'Спасибо за сообщение, мы ответим вам в ближайшее время!',
+		'error'				=> 'Ошибка при обработке письма, попробуйте ещё раз',
+		'error_bot'			=> 'Обнаружен бот! Попробуйте ещё раз',
+		'error_unexpected'	=> 'Неизвестная ошибка, попробуйте ещё раз',
 		'recaptcha_invalid'	=> 'Captcha not Validated! Please Try Again!',
 		'recaptcha_error'	=> 'Captcha not Submitted! Please Try Again.'
 	);
@@ -142,7 +151,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	}
 
 	$template	= !empty( $submits['template'] ) ? $submits['template'] : 'html';
-	$html_title	= !empty( $submits['html_title'] ) ? $submits['html_title'] : 'Form Response';
+	$html_title	= !empty( $submits['html_title'] ) ? $submits['html_title'] : 'Заявка с сайта';
 	$forcerecap	= ( !empty( $submits['force_recaptcha'] ) && $submits['force_recaptcha'] != 'false' ) ? true : false;
 	$replyto	= !empty( $submits['replyto'] ) ? explode( ',', $submits['replyto'] ) : false;
 
@@ -171,7 +180,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 	$ar_footer	= !empty( $submits['ar_footer'] ) ? $submits['ar_footer'] : 'Copyrights &copy; ' . date('Y') . ' <strong>SemiColonWeb</strong>. All Rights Reserved.';
 
-	$mail->Subject = !empty( $submits['subject'] ) ? $submits['subject'] : 'Form Response from your Website';
+	$mail->Subject = !empty( $submits['subject'] ) ? $submits['subject'] : 'Заявка с сайта';
 	$mail->SetFrom( $fromemail['email'] , $fromemail['name'] );
 
 	if( !empty( $replyto ) ) {
@@ -254,7 +263,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 		}
 	}
 
-	$referrer = $_SERVER['HTTP_REFERER'] ? '<br><br><br>This Form was submitted from: ' . $_SERVER['HTTP_REFERER'] : '';
+	$referrer = $_SERVER['HTTP_REFERER'] ? '<br><br><br>Форма отправлена с этой страницы: ' . $_SERVER['HTTP_REFERER'] : '';
 
 	$html_before = '<table class="full-width-container" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" bgcolor="#eeeeee" style="width: 100%; height: 100%; padding: 50px 0 50px 0;">
 				<tr>
